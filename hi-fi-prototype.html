@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hi-Fi Prototype — Burberry Trench Navigation Redesign</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#171310"/><text x="30%" y="55%" font-family="Georgia,serif" font-size="40" fill="#f6f2ea">B</text></svg></template>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f6f2ea;font-family:'Jost',system-ui,sans-serif;color:#171310}
+a{color:#171310;text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-color:#171310}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;margin:0}
+.eyebrow{font:600 11px/1 'Jost',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8a6a45}
+.nav-link{font-size:13px;letter-spacing:.03em;color:#171310}
+.nav-link.current{border-bottom:1px solid #171310}
+.plaid{background-image:repeating-linear-gradient(90deg,#171310 0 2px,transparent 2px 26px,#8a6a45 26px 28px,transparent 28px 52px),repeating-linear-gradient(0deg,#171310 0 2px,transparent 2px 26px,#8a6a45 26px 28px,transparent 28px 52px);background-color:#e3d3ba}
+.btn-camel{display:inline-flex;align-items:center;gap:8px;background:#171310;color:#f6f2ea;font:500 13px 'Jost',sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:15px 30px;border:1px solid #171310;cursor:pointer}
+.btn-camel:hover{background:#3a2f24}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#171310;font:500 13px 'Jost',sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:14px 29px;border:1px solid #171310;cursor:pointer}
+.btn-outline:hover{background:#171310;color:#f6f2ea}
+.style-card{display:flex;flex-direction:column}
+.swatch{width:28px;height:28px;border:1px solid #171310;cursor:pointer}
+.size-pill{border:1px solid #cabfa9;padding:12px 0;text-align:center;font-size:13px;cursor:pointer;background:#fff}
+.size-pill.active{border-color:#171310;background:#171310;color:#f6f2ea}
+.img-placeholder{position:relative;box-sizing:border-box;width:100%;height:100%;background:#efe6d4;border:1px solid #e0d3b8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#8a6a45;font:500 11px/1.3 'Jost',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:10px}
+.img-placeholder::before{content:'';display:block;width:26px;height:26px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%238a6a45" stroke-width="1.3"><rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16.5l-5.5-5.5-4 4-3-3-6.5 6.5"/></svg>') center/contain no-repeat;opacity:.6}
+.hero .img-placeholder{justify-content:flex-start;padding-top:64px}
+
+/* ── Nav ── */
+.nav-row{display:flex;align-items:center;gap:36px;padding:22px 48px;border-bottom:1px solid #e4dbc9}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;letter-spacing:.04em;margin-right:24px}
+.nav-burger{display:none;align-items:center;justify-content:center;background:none;border:0;padding:4px;margin:0 4px 0 0;cursor:pointer}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-icons{margin-left:auto;display:flex;gap:22px;align-items:center}
+
+/* ── Responsive ── */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+.compare-grid>*,.heritage-grid>*,.services-grid>*,.footer-grid>*,.pdp-grid>*,.pdp-gallery>*,.pdp-thumbs>*,.compare-header>*,.nav-row>*{min-width:0}
+
+@media (max-width:1080px){
+  .nav-row{padding:18px 28px}
+  .nav-links{gap:22px}
+  .hero{height:520px !important}
+  .hero-content h1{font-size:40px !important}
+  .heritage-cell{padding:48px 32px !important}
+  .cta-band{padding:56px 32px !important}
+  .services-grid{padding:28px 32px !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:24px !important}
+  .footer-grid{padding:32px 32px !important}
+  .footer-legal{padding:0 32px 24px !important}
+  .compare-header{padding:40px 32px 0 !important}
+  .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .crumb{padding:16px 32px 0 !important}
+  .pdp-grid{padding:24px 32px 48px !important;gap:36px !important}
+}
+
+@media (max-width:640px){
+  .page-intro{padding:32px 20px 20px !important}
+  .page-intro h1{font-size:24px !important}
+  .screen-label{padding:0 20px 8px !important}
+
+  .nav-row{padding:14px 20px;gap:12px}
+  .logo{font-size:19px;margin-right:0}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+
+  .hero{height:420px !important}
+  .hero .img-placeholder{padding-top:28px}
+  .hero-content{left:20px !important;right:20px !important;bottom:24px !important;max-width:none !important}
+  .hero-content h1{font-size:26px !important;margin:10px 0 12px !important}
+  .hero-content p{font-size:13px !important;margin:0 0 18px !important}
+  .hero-content .btn-camel{padding:12px 20px !important;font-size:12px !important}
+
+  .heritage-grid{grid-template-columns:1fr !important}
+  .heritage-cell{padding:36px 20px !important;border-right:0 !important;border-bottom:1px solid #e4dbc9}
+  .heritage-cell h2{font-size:22px !important}
+
+  .cta-band{padding:44px 20px !important}
+  .cta-band h2{font-size:24px !important}
+
+  .services-grid{grid-template-columns:1fr !important;padding:24px 20px !important;gap:20px !important}
+  .footer-grid{grid-template-columns:1fr !important;padding:28px 20px !important;gap:28px !important}
+  .footer-legal{padding:0 20px 24px !important}
+
+  .compare-header{padding:32px 20px 0 !important;gap:16px !important}
+  .compare-header h1{font-size:26px !important}
+  .compare-grid{grid-template-columns:1fr !important}
+
+  .crumb{padding:14px 20px 0 !important}
+  .pdp-grid{grid-template-columns:1fr !important;padding:16px 20px 40px !important;gap:28px !important}
+  .pdp-gallery{grid-template-columns:1fr !important;gap:10px !important}
+  .pdp-thumbs{flex-direction:row !important;order:2}
+  .pdp-thumb{width:74px !important;height:74px !important;flex:0 0 74px}
+  .pdp-main{order:1}
+  .pdp-details h1{font-size:26px !important}
+  .price-row span{font-size:17px !important}
+}
+
+@media (max-width:380px){
+  .hero-content h1{font-size:22px !important}
+  .page-intro h1{font-size:21px !important}
+}
+</style>
+</helmet>
+
+<div class="page-intro" style="max-width:1320px;margin:0 auto;padding:56px 40px 24px">
+  <p class="eyebrow" style="margin:0 0 10px">Concept redesign · v2 — high fidelity</p>
+  <h1 style="font-size:34px;margin:0 0 10px">Burberry — one path into the trench</h1>
+  <p style="font-size:14px;line-height:1.7;max-width:78ch;color:#4a3f34">A heritage-led homepage, a single unified comparison of all six trench silhouettes, and a clean product page for the Kensington — set in a cream, black and camel palette with the Haymarket check used once, as an accent.</p>
+</div>
+
+<!-- SCREEN 1 — HOMEPAGE -->
+<div class="screen-label" style="max-width:1320px;margin:32px auto 0;padding:0 40px 8px">
+  <p class="eyebrow">Screen 1</p>
+</div>
+<div style="max-width:1320px;margin:0 auto 64px;background:#fff;border:1px solid #e4dbc9" data-screen-label="Homepage desktop">
+  <nav class="nav-row">
+    <span class="logo">BURBERRY</span>
+    <button type="button" class="nav-burger" aria-label="Menu"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#171310" stroke-width="1.4"/></svg></button>
+    <div class="nav-links">
+      <a class="nav-link" href="#">Women</a>
+      <a class="nav-link" href="#">Men</a>
+      <a class="nav-link current" href="#">Trench Coats</a>
+      <a class="nav-link" href="#">Gifts</a>
+      <a class="nav-link" href="#">Bags</a>
+      <a class="nav-link" href="#">Beauty &amp; Fragrances</a>
+    </div>
+    <div class="nav-icons">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+  </nav>
+
+  <div class="hero" style="position:relative;height:640px">
+    <div class="img-placeholder" style="width:100%;height:100%">Heritage photograph</div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.62),rgba(10,8,6,0) 55%);pointer-events:none"></div>
+    <div class="hero-content" style="position:absolute;left:48px;bottom:56px;max-width:520px;pointer-events:none">
+      <span style="font:600 12px 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#e3d3ba">Est. 1856</span>
+      <h1 style="color:#fff;font-size:52px;line-height:1.05;margin:14px 0 18px">Born in the trenches.<br>Worn for a century.</h1>
+      <p style="color:#f1ece3;font-size:15px;line-height:1.6;margin:0 0 26px;max-width:44ch">Thomas Burberry's gabardine kept WWI officers dry — the coat, and the check sewn quietly inside it, haven't stopped since.</p>
+      <button type="button" class="btn-camel" style="pointer-events:auto">Explore The Trench →</button>
+    </div>
+  </div>
+
+  <div class="heritage-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0">
+    <div class="heritage-cell" style="padding:64px 56px;display:flex;flex-direction:column;gap:16px;border-right:1px solid #e4dbc9">
+      <span class="eyebrow">Heritage · 01</span>
+      <h2 style="font-size:28px">The Haymarket check</h2>
+      <p style="font-size:14px;line-height:1.7;color:#4a3f34;max-width:44ch">Registered in 1924, the check first lined the trench as a private signature — visible only to the wearer when the coat was opened.</p>
+      <div class="plaid" style="width:100%;height:150px;margin-top:6px"></div>
+      <a href="#" style="font-size:13px;margin-top:6px">Our heritage →</a>
+    </div>
+    <div class="heritage-cell" style="padding:64px 56px;display:flex;flex-direction:column;gap:16px">
+      <span class="eyebrow">Heritage · 02</span>
+      <h2 style="font-size:28px">Woven to outlast weather</h2>
+      <p style="font-size:14px;line-height:1.7;color:#4a3f34;max-width:44ch">Gabardine's tight, twill weave — patented in 1879 — sheds rain without rubber, and hasn't changed since.</p>
+      <div class="img-placeholder" style="width:100%;height:150px;margin-top:6px">Fabric detail</div>
+      <a href="#" style="font-size:13px;margin-top:6px">The construction →</a>
+    </div>
+  </div>
+
+  <div class="cta-band" style="background:#171310;color:#f6f2ea;padding:70px 56px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px">
+    <span class="eyebrow" style="color:#c9b58e">One trench, six silhouettes</span>
+    <h2 style="font-size:32px;color:#fff">Compare every style, side by side</h2>
+    <p style="font-size:14px;color:#d8cdbc;max-width:56ch">Mayfair to Camden — one page, no hunting through menus.</p>
+    <button type="button" class="btn-camel" style="background:#f6f2ea;color:#171310;border-color:#f6f2ea;margin-top:8px">Shop Trench Coats</button>
+  </div>
+
+  <footer style="border-top:1px solid #e4dbc9">
+    <div class="services-grid" style="display:grid;grid-template-columns:0.7fr 1fr 1fr 1fr;gap:32px;padding:32px 56px;border-bottom:1px solid #e4dbc9">
+      <span style="font-size:13px;letter-spacing:.02em;align-self:start">Our Services</span>
+      <div style="display:flex;gap:10px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.2" style="flex-shrink:0;margin-top:1px"><rect x="3" y="7" width="15" height="13" rx="1"/><path d="M13 11h6l2 3v3h-8z"/><circle cx="7.5" cy="20" r="1.5"/><circle cx="17.5" cy="20" r="1.5"/></svg>
+        <div>
+          <p style="font-size:13px;margin:0 0 4px">Free Delivery &amp; Returns</p>
+          <p style="font-size:12px;color:#7a6d5c;margin:0">Available on all online orders.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.2" style="flex-shrink:0;margin-top:1px"><rect x="4" y="9" width="16" height="11" rx="1"/><path d="M2 9h20M12 9v11M12 9c-1.5-4-6-4-6-1s4.5 1 6 1M12 9c1.5-4 6-4 6-1s-4.5 1-6 1"/></svg>
+        <div>
+          <p style="font-size:13px;margin:0 0 4px">Complimentary Gift Packaging</p>
+          <p style="font-size:12px;color:#7a6d5c;margin:0">Have your gifts arrive wrapped in our signature packaging, available at the checkout.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.2" style="flex-shrink:0;margin-top:1px"><path d="M4 10 12 4l8 6"/><rect x="6" y="10" width="12" height="10"/><path d="M10 20v-5h4v5"/></svg>
+        <div>
+          <p style="font-size:13px;margin:0 0 4px">Collect in Store</p>
+          <p style="font-size:12px;color:#7a6d5c;margin:0">Not at home? Choose to pick up from your nearest store, at your convenience.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;padding:40px 56px">
+      <div>
+        <h3 style="font-size:17px;margin-bottom:14px">Sign Up</h3>
+        <div style="display:flex;align-items:center;border-bottom:1px solid #171310;max-width:340px;padding-bottom:8px">
+          <input placeholder="Email" style="border:0;outline:0;font:14px 'Jost';color:#171310;background:transparent;flex:1"></input>
+          <span>→</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:#171310">
+        <a href="#">Find a Store</a>
+        <a href="#">Stories</a>
+        <a href="#">Burberry Services</a>
+        <a href="#">Customer Support</a>
+        <a href="#">About Burberry</a>
+        <a href="#">Legal &amp; Cookies</a>
+        <span style="color:#4a3f34">Language <a href="#">English</a></span>
+        <span style="color:#4a3f34">Shipping to <a href="#">United States ($)</a></span>
+      </div>
+    </div>
+    <div class="footer-legal" style="padding:0 56px 28px;font-size:11px;color:#7a6d5c">
+      <p style="margin:0 0 8px"><a href="#" style="font-size:11px">Modern Slavery Statement</a></p>
+      <p style="margin:0">If you are using a screen-reader and are having problems using this website, please call <a href="#" style="font-size:11px">+1 877 217 4085</a> or <a href="#" style="font-size:11px">contact us</a> for assistance.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- SCREEN 2 — TRENCH COMPARISON -->
+<div class="screen-label" style="max-width:1320px;margin:0 auto;padding:0 40px 8px">
+  <p class="eyebrow">Screen 2</p>
+</div>
+<div style="max-width:1320px;margin:0 auto 64px;background:#fff;border:1px solid #e4dbc9" data-screen-label="Trench comparison desktop">
+  <nav class="nav-row">
+    <span class="logo">BURBERRY</span>
+    <button type="button" class="nav-burger" aria-label="Menu"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#171310" stroke-width="1.4"/></svg></button>
+    <div class="nav-links">
+      <a class="nav-link" href="#">Women</a>
+      <a class="nav-link" href="#">Men</a>
+      <a class="nav-link current" href="#">Trench Coats</a>
+      <a class="nav-link" href="#">Gifts</a>
+      <a class="nav-link" href="#">Bags</a>
+      <a class="nav-link" href="#">Beauty &amp; Fragrances</a>
+    </div>
+    <div class="nav-icons">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+  </nav>
+
+  <div class="compare-header" style="padding:56px 56px 0;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+    <div>
+      <span class="eyebrow">The Trench</span>
+      <h1 style="font-size:40px;margin-top:12px">Six silhouettes. One heritage.</h1>
+      <p style="font-size:14px;color:#4a3f34;margin-top:12px;max-width:56ch">Every trench, compared by fit, length and the era it draws from — one page, not two menus.</p>
+    </div>
+    <div style="display:flex;border:1px solid #171310">
+      <button type="button" style="padding:11px 26px;font:500 13px 'Jost';letter-spacing:.05em;background:#171310;color:#fff;border:0;cursor:pointer">Women</button>
+      <button type="button" style="padding:11px 26px;font:500 13px 'Jost';letter-spacing:.05em;background:#fff;color:#171310;border:0;cursor:pointer;border-left:1px solid #171310">Men</button>
+    </div>
+  </div>
+
+  <div class="compare-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:#e4dbc9;margin-top:48px">
+
+    <div class="style-card" style="background:#fff;padding:0 0 28px">
+      <div class="img-placeholder" style="width:100%;aspect-ratio:4/5">Mayfair</div>
+      <div style="padding:22px 24px 0">
+        <span class="eyebrow" style="color:#8a6a45">1920s original</span>
+        <h3 style="font-size:22px;margin:10px 0 8px">Mayfair</h3>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:0 0 14px">The double-breasted original — knee-length, wide lapel, check lining.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px">$2,490</span><a href="#" style="font-size:13px">View →</a></div>
+      </div>
+    </div>
+
+    <div class="style-card" style="background:#fff;padding:0 0 28px">
+      <div class="img-placeholder" style="width:100%;aspect-ratio:4/5">Kensington</div>
+      <div style="padding:22px 24px 0">
+        <span class="eyebrow" style="color:#8a6a45">Everyday classic</span>
+        <h3 style="font-size:22px;margin:10px 0 8px">Kensington</h3>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:0 0 14px">Slimmer through the body, mid-thigh length — the coat most people picture first.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px">$2,290</span><a href="#" style="font-size:13px">View →</a></div>
+      </div>
+    </div>
+
+    <div class="style-card" style="background:#fff;padding:0 0 28px">
+      <div class="img-placeholder" style="width:100%;aspect-ratio:4/5">Waterloo</div>
+      <div style="padding:22px 24px 0">
+        <span class="eyebrow" style="color:#8a6a45">Relaxed drape</span>
+        <h3 style="font-size:22px;margin:10px 0 8px">Waterloo</h3>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:0 0 14px">Longer and fuller-cut, falling well below the knee for a looser silhouette.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px">$2,590</span><a href="#" style="font-size:13px">View →</a></div>
+      </div>
+    </div>
+
+    <div class="style-card" style="background:#fff;padding:0 0 28px">
+      <div class="img-placeholder" style="width:100%;aspect-ratio:4/5">Chelsea</div>
+      <div style="padding:22px 24px 0">
+        <span class="eyebrow" style="color:#8a6a45">Tailored city cut</span>
+        <h3 style="font-size:22px;margin:10px 0 8px">Chelsea</h3>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:0 0 14px">Fitted at the waist with a shorter hem — the most structured of the six.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px">$2,390</span><a href="#" style="font-size:13px">View →</a></div>
+      </div>
+    </div>
+
+    <div class="style-card" style="background:#fff;padding:0 0 28px">
+      <div class="img-placeholder" style="width:100%;aspect-ratio:4/5">Fitzrovia</div>
+      <div style="padding:22px 24px 0">
+        <span class="eyebrow" style="color:#8a6a45">'70s archive</span>
+        <h3 style="font-size:22px;margin:10px 0 8px">Fitzrovia</h3>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:0 0 14px">Oversized fit with dropped shoulders, drawn from the '70s archive.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px">$2,650</span><a href="#" style="font-size:13px">View →</a></div>
+      </div>
+    </div>
+
+    <div class="style-card" style="background:#fff;padding:0 0 28px">
+      <div class="img-placeholder" style="width:100%;aspect-ratio:4/5">Camden</div>
+      <div style="padding:22px 24px 0">
+        <span class="eyebrow" style="color:#8a6a45">Cropped, modern</span>
+        <h3 style="font-size:22px;margin:10px 0 8px">Camden</h3>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:0 0 14px">Single-breasted and cropped above the knee, cut for movement.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px">$2,190</span><a href="#" style="font-size:13px">View →</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SCREEN 3 — PRODUCT PAGE (Kensington) -->
+<div class="screen-label" style="max-width:1320px;margin:0 auto;padding:0 40px 8px">
+  <p class="eyebrow">Screen 3</p>
+</div>
+<div style="max-width:1320px;margin:0 auto 80px;background:#fff;border:1px solid #e4dbc9" data-screen-label="Product page desktop — Kensington">
+  <nav class="nav-row">
+    <span class="logo">BURBERRY</span>
+    <button type="button" class="nav-burger" aria-label="Menu"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#171310" stroke-width="1.4"/></svg></button>
+    <div class="nav-links">
+      <a class="nav-link" href="#">Women</a>
+      <a class="nav-link" href="#">Men</a>
+      <a class="nav-link current" href="#">Trench Coats</a>
+      <a class="nav-link" href="#">Gifts</a>
+      <a class="nav-link" href="#">Bags</a>
+      <a class="nav-link" href="#">Beauty &amp; Fragrances</a>
+    </div>
+    <div class="nav-icons">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#171310" stroke-width="1.3"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+  </nav>
+  <div class="crumb" style="padding:20px 56px 0"><a href="#" style="font-size:13px">‹ All six trench styles</a></div>
+
+  <div class="pdp-grid" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:56px;padding:24px 56px 64px">
+    <div class="pdp-gallery" style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px">
+      <div class="pdp-thumbs" style="display:flex;flex-direction:column;gap:14px">
+        <div class="img-placeholder pdp-thumb" style="width:100%;aspect-ratio:1/1">Detail</div>
+        <div class="img-placeholder pdp-thumb" style="width:100%;aspect-ratio:1/1">Back</div>
+        <div class="img-placeholder pdp-thumb" style="width:100%;aspect-ratio:1/1">Worn</div>
+      </div>
+      <div class="img-placeholder pdp-main" style="width:100%;aspect-ratio:4/5">The Kensington — front view</div>
+    </div>
+
+    <div class="pdp-details" style="display:flex;flex-direction:column;gap:22px;padding-top:8px">
+      <div>
+        <span class="eyebrow">Heritage trench</span>
+        <div class="price-row" style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px">
+          <h1 style="font-size:34px">The Kensington</h1>
+          <span style="font-size:19px">$2,290</span>
+        </div>
+        <p style="font-size:14px;line-height:1.7;color:#4a3f34;margin:14px 0 0;max-width:48ch">Cut from the original 1924 pattern in signature cotton gabardine — slimmer through the body, mid-thigh length, the everyday classic.</p>
+      </div>
+
+      <div>
+        <span style="display:block;font-size:12px;letter-spacing:.05em;margin-bottom:10px;color:#7a6d5c">Colour — Honey</span>
+        <div style="display:flex;gap:10px">
+          <div class="swatch" style="background:#c69a56;outline:2px solid #171310;outline-offset:3px"></div>
+          <div class="swatch" style="background:#171310"></div>
+          <div class="swatch" style="background:#d8cdbc"></div>
+        </div>
+      </div>
+
+      <div>
+        <span style="display:block;font-size:12px;letter-spacing:.05em;margin-bottom:10px;color:#7a6d5c">Size</span>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:400px">
+          <div class="size-pill">XS</div><div class="size-pill active">S</div><div class="size-pill">M</div><div class="size-pill">L</div><div class="size-pill">XL</div>
+        </div>
+      </div>
+
+      <button type="button" class="btn-camel" style="width:100%;justify-content:center;margin-top:6px;padding:17px">Add to Bag</button>
+
+      <div style="border:1px solid #e4dbc9;padding:20px 22px;margin-top:8px">
+        <span class="eyebrow">Heritage note</span>
+        <p style="font-size:13px;line-height:1.6;color:#4a3f34;margin:10px 0 0">First issued to army officers in 1914, refined into the Kensington silhouette worn today.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>
