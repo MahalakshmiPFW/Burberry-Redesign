@@ -1,0 +1,8 @@
+{
+  "installCommand": "npm --prefix react-prototype install",
+  "buildCommand": "npm --prefix react-prototype run build",
+  "outputDirectory": "react-prototype/dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

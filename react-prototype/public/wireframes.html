@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframes — Burberry Trench Navigation Redesign</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#7c5cff"/><text x="30%" y="55%" font-family="Arial,sans-serif" font-size="40" fill="#fff">W</text></svg></template>
+<meta name="design_doc_mode" content="canvas">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:hidden;background:#e5e5e5;font-family:'Inter',Arial,Helvetica,sans-serif;background-image:radial-gradient(#d3d3d3 1px,transparent 1px);background-size:16px 16px}
+a{color:#555;text-decoration:none}
+a:hover{color:#222;text-decoration:underline}
+.frame-label{font:500 12px/1 'Inter',Arial,sans-serif;color:#7c5cff;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.frame-label::before{content:'';width:6px;height:6px;background:#7c5cff;border-radius:1px}
+.frame-scroll{max-width:1440px;margin:0 auto 64px}
+.frame{outline:1px solid #7c5cff;outline-offset:4px;box-sizing:border-box;width:100%;max-width:1440px}
+.wf{border:1px dashed #b3b3b3;background:#fafafa;color:#8a8a8a;display:flex;align-items:center;justify-content:center;text-align:center;font:500 11px/1.3 'Inter',Arial,sans-serif;letter-spacing:.02em;padding:8px;position:relative;z-index:0}
+.wf-fill{background:#efefef}
+.wf-img::before{content:'';position:absolute;inset:0;z-index:-1;background-image:
+  repeating-linear-gradient(45deg,#d8d8d8 0 2px,transparent 2px 14px)}
+.wf-btn{border:1px solid #8a8a8a;background:#e8e8e8;color:#444;font:600 11px 'Inter',Arial,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.wf-text{border:none;background:transparent;color:#999;justify-content:flex-start;padding-left:0}
+.wf-text-line{background:#d9d9d9;border-radius:2px}
+@media (max-width:900px){
+  .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+}
+@media (max-width:640px){
+  h1{font-size:20px !important}
+  .frame{padding-left:16px !important;padding-right:16px !important;padding-bottom:24px !important}
+  .nav-row{flex-wrap:wrap;row-gap:10px !important}
+  .wf-grid,.compare-grid{grid-template-columns:1fr !important}
+}
+</style>
+</helmet>
+
+<div style="max-width:1440px;margin:0 auto;padding:48px 40px 20px">
+  <p style="font:600 11px 'Inter',Arial;letter-spacing:.14em;text-transform:uppercase;color:#7c5cff;margin:0 0 6px">Concept redesign · wireframes</p>
+  <h1 style="font:700 26px 'Inter',Arial;margin:0 0 8px;color:#1a1a1a">Wireframes — structure only</h1>
+  <p style="font-size:13px;line-height:1.6;max-width:80ch;color:#666;margin:0">Low-fidelity layout for the three screens, from mobile up to a 1440px desktop canvas. No color or type treatment yet — annotated blocks only, to agree the structure before visual design. Nav and grids reflow into single columns on narrow screens; label text stays full size for readability.</p>
+</div>
+
+<!-- SCREEN 1 — HOMEPAGE -->
+<div style="max-width:1440px;margin:40px auto 0;padding:0 40px">
+  <p class="frame-label">Homepage · Desktop, 1440</p>
+</div>
+<div class="frame-scroll">
+<div class="frame" style="padding:0 40px 40px;background:#fff" data-screen-label="Homepage desktop wireframe">
+  <div class="nav-row" style="display:flex;align-items:center;gap:24px;padding:18px 0;border-bottom:1px solid #e0e0e0">
+    <div class="wf" style="width:110px;height:26px">Logo</div>
+    <div class="wf" style="width:90px;height:26px">Women</div>
+    <div class="wf" style="width:70px;height:26px">Men</div>
+    <div class="wf" style="width:130px;height:26px">Trench Coats</div>
+    <div class="wf" style="width:80px;height:26px">Gifts</div>
+    <div class="wf" style="width:70px;height:26px">Bags</div>
+    <div class="wf" style="width:170px;height:26px">Beauty &amp; Fragrances</div>
+    <div style="display:flex;gap:10px;margin-left:auto">
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+    </div>
+  </div>
+  <div class="wf wf-fill wf-img" style="height:460px;margin-top:24px">Full-bleed hero photograph — heritage / craft imagery</div>
+  <div style="display:flex;gap:16px;margin-top:16px">
+    <div class="wf wf-text" style="flex:1;height:18px">Kicker — Est. 1856</div>
+  </div>
+  <div class="wf wf-text" style="height:60px;margin-top:8px">H1 — heritage headline (trench + check origin)</div>
+  <div class="wf wf-text" style="height:28px;margin-top:8px;width:60%">Subhead — one supporting line</div>
+  <div class="wf wf-btn" style="height:44px;width:260px;margin-top:16px">CTA — Shop Trench Coats</div>
+  <div class="wf-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:36px">
+    <div class="wf wf-img" style="height:180px">Heritage story block — check pattern origin, image + copy</div>
+    <div class="wf wf-img" style="height:180px">Craft story block — gabardine / construction, image + copy</div>
+  </div>
+  <div class="wf wf-fill" style="height:160px;margin-top:24px">Teaser band — "Six silhouettes, one heritage" → single CTA into comparison page</div>
+
+  <div style="border-top:1px solid #ccc;margin-top:32px">
+    <div class="wf-grid" style="display:grid;grid-template-columns:0.7fr 1fr 1fr 1fr;gap:16px;padding:20px 0;border-bottom:1px solid #ccc">
+      <div class="wf" style="height:24px;align-self:start">Our Services</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="wf" style="height:22px">Icon + Free Delivery &amp; Returns</div>
+        <div class="wf wf-text" style="height:16px">Available on all online orders.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="wf" style="height:22px">Icon + Complimentary Gift Packaging</div>
+        <div class="wf wf-text" style="height:30px">Have your gifts arrive wrapped in our signature packaging, available at checkout.</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="wf" style="height:22px">Icon + Collect in Store</div>
+        <div class="wf wf-text" style="height:30px">Not at home? Pick up from your nearest store, at your convenience.</div>
+      </div>
+    </div>
+    <div class="wf-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;padding:20px 0">
+      <div class="wf" style="height:70px">Sign Up — email input</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="wf wf-text" style="height:16px;justify-content:flex-start">Find a Store / Stories / Burberry Services</div>
+        <div class="wf wf-text" style="height:16px;justify-content:flex-start">Customer Support / About Burberry / Legal &amp; Cookies</div>
+        <div class="wf wf-text" style="height:16px;justify-content:flex-start">Language — Shipping to</div>
+      </div>
+    </div>
+    <div class="wf wf-text" style="height:34px;padding:0 0 20px">Modern Slavery Statement · Accessibility line</div>
+  </div>
+</div>
+</div>
+
+<!-- SCREEN 2 — TRENCH COMPARISON -->
+<div style="max-width:1440px;margin:0 auto;padding:0 40px">
+  <p class="frame-label">Trench comparison · Desktop, 1440</p>
+</div>
+<div class="frame-scroll">
+<div class="frame" style="padding:0 40px 40px;background:#fff" data-screen-label="Trench comparison desktop wireframe">
+  <div class="nav-row" style="display:flex;align-items:center;gap:24px;padding:18px 0;border-bottom:1px solid #e0e0e0">
+    <div class="wf" style="width:110px;height:26px">Logo</div>
+    <div class="wf" style="width:90px;height:26px">Women</div>
+    <div class="wf" style="width:70px;height:26px">Men</div>
+    <div class="wf" style="width:130px;height:26px">Trench Coats</div>
+    <div class="wf" style="width:80px;height:26px">Gifts</div>
+    <div class="wf" style="width:70px;height:26px">Bags</div>
+    <div class="wf" style="width:170px;height:26px">Beauty &amp; Fragrances</div>
+    <div style="display:flex;gap:10px;margin-left:auto">
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+    </div>
+  </div>
+  <div class="wf wf-text" style="height:60px;margin-top:24px">H1 — "Six silhouettes. One heritage." + one line intro</div>
+  <div style="display:flex;gap:0;margin-top:16px;width:fit-content">
+    <div class="wf wf-btn" style="width:120px;height:32px;border-right:0">Women</div>
+    <div class="wf wf-btn" style="width:120px;height:32px;background:#fafafa">Men</div>
+  </div>
+  <div class="compare-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf wf-fill wf-img" style="height:220px">Photo</div>
+      <div class="wf wf-text" style="height:60px;flex-direction:column;align-items:flex-start">Style name<br>1-line diff (fit / length / era)<br>Price</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf wf-fill wf-img" style="height:220px">Photo</div>
+      <div class="wf wf-text" style="height:60px;flex-direction:column;align-items:flex-start">Style name<br>1-line diff (fit / length / era)<br>Price</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf wf-fill wf-img" style="height:220px">Photo</div>
+      <div class="wf wf-text" style="height:60px;flex-direction:column;align-items:flex-start">Style name<br>1-line diff (fit / length / era)<br>Price</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf wf-fill wf-img" style="height:220px">Photo</div>
+      <div class="wf wf-text" style="height:60px;flex-direction:column;align-items:flex-start">Style name<br>1-line diff (fit / length / era)<br>Price</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf wf-fill wf-img" style="height:220px">Photo</div>
+      <div class="wf wf-text" style="height:60px;flex-direction:column;align-items:flex-start">Style name<br>1-line diff (fit / length / era)<br>Price</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="wf wf-fill wf-img" style="height:220px">Photo</div>
+      <div class="wf wf-text" style="height:60px;flex-direction:column;align-items:flex-start">Style name<br>1-line diff (fit / length / era)<br>Price</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- SCREEN 3 — PDP -->
+<div style="max-width:1440px;margin:0 auto;padding:0 40px">
+  <p class="frame-label">Product page · Desktop, 1440</p>
+</div>
+<div class="frame-scroll" style="margin-bottom:80px">
+<div class="frame" style="padding:0 40px 40px;background:#fff" data-screen-label="PDP desktop wireframe">
+  <div class="nav-row" style="display:flex;align-items:center;gap:24px;padding:18px 0;border-bottom:1px solid #e0e0e0">
+    <div class="wf" style="width:110px;height:26px">Logo</div>
+    <div class="wf" style="width:90px;height:26px">Women</div>
+    <div class="wf" style="width:70px;height:26px">Men</div>
+    <div class="wf" style="width:130px;height:26px">Trench Coats</div>
+    <div class="wf" style="width:80px;height:26px">Gifts</div>
+    <div class="wf" style="width:70px;height:26px">Bags</div>
+    <div class="wf" style="width:170px;height:26px">Beauty &amp; Fragrances</div>
+    <div style="display:flex;gap:10px;margin-left:auto">
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
+      <div class="wf" style="width:26px;height:26px;padding:0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="1.3"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+    </div>
+  </div>
+  <div class="wf wf-text" style="width:220px;height:18px;margin-top:20px">‹ Back — all six styles</div>
+  <div class="wf-grid" style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:40px;margin-top:16px">
+    <div style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="wf wf-fill wf-img" style="height:130px">Thumb</div>
+        <div class="wf wf-fill wf-img" style="height:130px">Thumb</div>
+        <div class="wf wf-fill wf-img" style="height:130px">Thumb</div>
+      </div>
+      <div class="wf wf-fill wf-img" style="height:560px">Main product photograph</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="wf wf-text" style="height:18px;width:50%">Kicker — Heritage trench</div>
+      <div class="wf wf-text" style="height:36px">Product name + price</div>
+      <div class="wf wf-text" style="height:60px">Short description</div>
+      <div class="wf" style="height:60px">Colour swatches</div>
+      <div class="wf" style="height:60px">Size selector</div>
+      <div class="wf wf-btn" style="height:48px">Add to Bag</div>
+      <div class="wf" style="height:90px">Heritage note — construction / pattern origin</div>
+    </div>
+  </div>
+</div>
+</div>
+
+</x-dc>
+</body>
+</html>
